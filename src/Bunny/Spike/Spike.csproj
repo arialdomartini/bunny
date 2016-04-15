@@ -48,8 +48,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Channel.cs" />
+    <Compile Include="Decorator.cs" />
+    <Compile Include="IConsumer.cs" />
+    <Compile Include="ISetup.cs" />
+    <Compile Include="MyConsumer.cs" />
+    <Compile Include="SetupMyConsumer.cs" />
     <Compile Include="Spike.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Supervisor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
