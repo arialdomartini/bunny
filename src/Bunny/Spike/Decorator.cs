@@ -5,12 +5,14 @@ namespace Spike
   public class Decorator : IConsumer
   {
     private readonly IConsumer _consumer;
+    private readonly Channel _channel;
     private ISupervisor _supervisor;
     private Func<Decorator> _createNew;
 
-    public Decorator(IConsumer consumer)
+    public Decorator(IConsumer consumer, Channel channel)
     {
       _consumer = consumer;
+      _channel = channel;
     }
 
     public void RegisterSupervisor(ISupervisor supervisor, Func<Decorator> createNew)
@@ -37,6 +39,11 @@ namespace Spike
     {
       Console.WriteLine("  Decorator: OnCancel. Notifying the Supervisor");
       _supervisor.NotifyCancel(_createNew);
+    }
+
+    public Channel GetChannel()
+    {
+      return _channel;
     }
   }
 }

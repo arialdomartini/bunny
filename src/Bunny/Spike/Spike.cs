@@ -8,7 +8,7 @@ namespace Spike
     public void use_case()
     {
       var supervisor = new Supervisor();
-      var decorator = supervisor.RegisterNewDecorator(() => CreateMyConsumer());
+      var decorator = supervisor.RegisterNewDecorator(CreateMyConsumer);
 
       decorator.ConsumeMessage("foo");
       decorator.ConsumeMessage("make the consumer crash");
@@ -17,8 +17,8 @@ namespace Spike
     public Decorator CreateMyConsumer()
     {
       var channel = new Channel();
-      var consumer = new MyConsumer();
-      var decorator = new Decorator(consumer);
+      var consumer = new MyConsumer(channel);
+      var decorator = new Decorator(consumer, channel);
       return decorator;
     }
   }

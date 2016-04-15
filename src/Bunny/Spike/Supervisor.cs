@@ -26,8 +26,7 @@ namespace Spike
       var decorator = createDecorator();
       decorator.RegisterSupervisor(this, createDecorator);
       var setupConsumer = new SetupMyConsumer();
-      var channel = new Channel(); // sbagliato, riusare il solito!
-      setupConsumer.Setup(channel, decorator);
+      setupConsumer.Setup(decorator.GetChannel(), decorator);
 
       return decorator;
     }
